@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fcfcfc">
+  <meta name="description" content="BiTabakda — Komşunun Mutfağından. Mahallendeki ev yapımı lezzetleri keşfet.">
+  <title>BiTabakda — Komşunun Mutfağından</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="BiTabakda ana sayfa"><img src="../Marka/bitabakda-logo-yatay.svg" alt="BiTabakda — Komşunun Mutfağından" onerror="this.onerror=null;this.src='./bitabakda-logo-yatay.svg'"></a>
+    <label class="search"><span class="sr-only">Yemek, üretici veya ilçe ara</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="searchInput" type="search" placeholder="Yemek, üretici veya ilçe ara"></label>
+    <div class="top-actions"><button class="location" id="districtButton" aria-label="İlçe seç">⌖ <span>İlçeni seç</span> <b>⌄</b></button><button class="avatar" aria-label="Profilim">A</button></div>
+  </header>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Ana menü">
+      <button class="nav-item active" data-view="home"><span class="nav-icon">⌂</span> Ana sayfa</button>
+      <button class="nav-item" data-view="explore"><span class="nav-icon">⌕</span> Keşfet</button>
+      <button class="nav-item" data-view="orders"><span class="nav-icon">▤</span> Siparişlerim</button>
+      <button class="nav-item" data-view="messages"><span class="nav-icon">◌</span> Mesajlar <i class="unread-dot"></i></button>
+      <button class="nav-item" data-view="saved"><span class="nav-icon">♡</span> Kaydedilenler</button>
+      <div class="side-rule"></div>
+      <button class="nav-item" data-view="profile"><span class="nav-icon">◎</span> Profilim</button>
+      <section class="seller-card"><div class="seller-mark">✦</div><h3>Mahallende üretici misin?</h3><p>Ev yapımı lezzetlerini komşularınla buluştur.</p><button class="button button-dark" id="sellerApply">Üretici ol</button></section>
+      <p class="side-note">Birlikte daha güzel sofralar. <span>♥</span></p>
+    </aside>
+    <main id="mainContent">
+      <section class="welcome-row"><div><div class="eyebrow"><span class="live-dot"></span> MAHALLENDE BUGÜN</div><h1>Güzel şeyler <em>komşudan.</em></h1><p class="welcome-sub">Ev yapımı lezzetleri keşfet, hikâyelerine ortak ol.</p></div><button class="button button-orange" id="openComposer"><span>＋</span> Paylaşım yap</button></section>
+      <section class="area-banner"><div class="area-icon">⌖</div><div><strong>Önce mahalleni seç</strong><p>Sana yakın ev yapımı lezzetleri ve üreticileri bulalım.</p></div><button class="text-button" id="chooseDistrict">İlçe seç <span>→</span></button></section>
+      <section class="quick-cats" aria-label="Kategori filtreleri">
+        <button class="cat-chip selected" data-category="all">Hepsi</button><button class="cat-chip" data-category="food">Yemekler</button><button class="cat-chip" data-category="dessert">Tatlılar</button><button class="cat-chip" data-category="social">Günlük hayat</button>
+      </section>
+      <div class="content-grid">
+        <section class="feed-column"><div class="section-heading"><div><span class="eyebrow">KOMŞULARINDAN</span><h2>Mahalle akışı</h2></div><button class="sort-button" id="feedSort">Sana göre <span>⌄</span></button></div><div id="feedList" class="feed-list" aria-live="polite"></div></section>
+        <aside class="right-rail">
+          <section class="rail-card area-card"><div class="rail-title"><h3>Bu hafta mahallede</h3><span class="tiny-sun">✳</span></div><p>Yakınındaki üreticilerden sofrana küçük bir mutluluk.</p><button class="button button-outline" id="railDistrict">Mahalleni belirle</button></section>
+          <section class="rail-card"><div class="rail-title"><h3>Sevilen üreticiler</h3><a href="#producers">Tümü</a></div><div class="producer-list" id="producerList"></div></section>
+          <section class="mini-note"><div class="mini-heart">♡</div><div><strong>Evden gelen emek</strong><p>Her sipariş, mahallede bir üreticinin emeğine destek olur.</p></div></section>
+          <footer class="rail-footer">Hakkımızda　·　Güvenli alışveriş　·　Yardım<br><span>BiTabakda © 2026 · Komşunun Mutfağından</span><small>Demo prototip · Sipariş ve işlemler gerçek değildir</small></footer>
+        </aside>
+      </div>
+    </main>
+  </div>
+  <nav class="mobile-nav" aria-label="Mobil menü"><button class="mobile-active" data-view="home"><span>⌂</span>Ana sayfa</button><button data-view="explore"><span>⌕</span>Keşfet</button><button id="mobileCompose" class="mobile-plus" aria-label="Paylaşım yap">＋</button><button data-view="orders"><span>▤</span>Siparişler</button><button data-view="profile"><span>◎</span>Profil</button></nav>
+  <dialog id="composerDialog" class="modal"><form method="dialog" id="composerForm"><div class="modal-head"><div><span class="eyebrow">MAHALLENLE PAYLAŞ</span><h2>Bugün neler oluyor?</h2></div><button class="close-button" aria-label="Kapat">×</button></div><label class="composer-label" for="postText">Paylaşımın</label><textarea id="postText" rows="4" placeholder="Mutfağından, gününden..." required></textarea><div class="composer-bottom"><span>Paylaşımın herkese açık olacak.</span><button class="button button-orange" id="publishPost" value="publish">Paylaş</button></div></form></dialog>
+  <dialog id="districtDialog" class="modal small-modal"><form method="dialog" id="districtForm"><div class="modal-head"><div><span class="eyebrow">YAKININDAKİLER</span><h2>Mahalleni seç</h2></div><button class="close-button" aria-label="Kapat">×</button></div><label for="districtInput">İlçe</label><input id="districtInput" placeholder="Örn. Kadıköy" autocomplete="address-level2"><p class="helper">Bu prototipte konum bilgisi sadece ekranda gösterilir.</p><button class="button button-orange full" id="saveDistrict" value="save">Devam et</button></form></dialog>
+  <dialog id="messageDialog" class="modal small-modal"><form method="dialog"><div class="modal-head"><div><span class="eyebrow">SATICIYA MESAJ</span><h2 id="messageTitle">Mesaj</h2></div><button class="close-button" aria-label="Kapat">×</button></div><div class="demo-message">Merhaba! Bu konuşma demo amaçlıdır. Gerçek mesajlaşma henüz etkin değil.</div><label for="messageInput">Mesajın</label><input id="messageInput" placeholder="Bir şeyler yaz..." disabled><button class="button button-orange full" disabled>Mesaj gönderme yakında</button></form></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
